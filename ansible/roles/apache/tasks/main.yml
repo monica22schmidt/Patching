@@ -1,0 +1,10 @@
+---
+# tasks file for /etc/ansible/roles/apache
+
+
+- name: Import Tasks
+  import_tasks: send_email_apache.yml
+
+- import_tasks: adj_rem_apache.yml
+
+- import_tasks: playbook_apache.yml

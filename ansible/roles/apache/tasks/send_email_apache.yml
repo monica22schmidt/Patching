@@ -1,0 +1,19 @@
+--- 
+    - name: Download Apache Files
+      command: 'python etc/ansible/roles/apache/files/patch.py'
+      environment:
+        http_proxy: http://....
+      register: EmailApache
+      delegate_to: localhost
+
+    - name: Send Apache Email Update
+      mail:
+        host: mailgate.alliant-energy.com
+        port: 25
+        to:
+          - Email
+        from:
+          - Email
+        subject: "Weekly Apache Patching Report"
+        body: "{{ EmailApache.stdout }}"
+      delegate_to: localhost

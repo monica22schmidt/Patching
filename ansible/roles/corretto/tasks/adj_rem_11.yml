@@ -1,0 +1,39 @@
+--- 
+    - name: Check paths
+      arg: 11
+      include: check_dirs.yml
+
+    - name: Search for Files
+      find:
+        paths: /{{ version_output.stdout_lines[0] }}
+        use_regex: yes
+        patterns: "(amazon)*"
+      register: files_matchedl
+
+    - name: Search for Files
+      find:
+        paths: /{{ version_output.stdout_lines[0] }}
+        use_regex: yes
+        patterns: "(amazon)*"
+      register: files_matchedw
+
+    - name: Include move task
+      include_tasks: move.yml
+      when: windows_dir.stat.exists and linux_dir.stat.exists
+
+
+    - name: Copy New Linux Files To Server
+      copy:
+        src: /downloaded/11/linux/
+        dest: /11
+        remote_src: no
+      when: linux_dir.stat.exists
+
+
+    - name: Copy New Windows Files to Server
+      copy:
+        src: /downloaded/11/windows/
+        dest: /11 
+        remote_src: no
+      when: windows_dir.stat.exists
+

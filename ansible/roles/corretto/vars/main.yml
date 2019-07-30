@@ -1,0 +1,11 @@
+---
+# vars file for /etc/ansible/roles/corretto
+
+paths: 
+   #list paths here
+linux_dir_deats: False
+windows_dir_deats: False
+version_output: ""
+linux_dir: False
+windows_dir: False
+arg: 8

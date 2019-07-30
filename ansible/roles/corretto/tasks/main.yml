@@ -1,0 +1,14 @@
+---
+# tasks file for /etc/ansible/roles/corretto
+    
+- name: Import tasks
+  import_tasks: send_email_corretto.yml
+  
+- import_tasks: adj_rem_8.yml
+  
+- import_tasks: adj_rem_11.yml
+  
+- import_tasks: playbook_corretto.yml
+ 
+
+

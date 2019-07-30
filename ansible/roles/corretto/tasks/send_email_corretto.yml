@@ -1,0 +1,19 @@
+---
+   - name: Download Corretto Files
+     command: "file Path"
+     environment:
+        https_proxy: https://...
+     register: Email
+     delegate_to: localhost
+
+   - name: Send Email Update
+     mail:
+       host: mailgate....
+       port: 25
+       to:
+         - Email
+       from:
+         - Email
+       subject: "Weekly Corretto Patching Report"
+       body: "{{ Email.stdout }}" 
+     delegate_to: localhost

@@ -1,0 +1,13 @@
+---
+    - name: Remove Downloaded Files
+      file:
+        path: /downloaded
+        state: absent
+      delegate_to: localhost
+
+    - name: Recreate Downloaded Directory For Future Use
+      file:
+        path: /downloaded
+        state: directory
+      delegate_to: localhost
+

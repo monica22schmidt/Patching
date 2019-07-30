@@ -1,0 +1,71 @@
+---
+    - name: Get Version Number
+      shell: "python /etc/ansible/roles/corretto/files/get_version.py {{ arg }}"
+      environment:
+        no_proxy: localhost, ......
+
+      delegate_to: localhost
+      register: version_output
+
+    - stat:
+        path: {{ item }}
+      with_items: "{{ paths }}"
+      register: there
+
+    - name: Make Repo
+      file:
+        path: {{ item.item }}
+        state: directory
+      when: not item.stat.exists
+      with_items: "{{ there.results }}"
+     
+
+    - stat:
+        path: /{{ version_output.stdout_lines[0] }}/old
+      register: linux_old
+
+    - name: Make Old Directory
+      file:
+        path: /{{ version_output.stdout_lines[0] }}/old
+        state: directory
+      when: not linux_old.stat.exists
+
+    - stat:
+        path: /{{ version_output.stdout_lines[0] }}/old
+      register: windows_old
+
+    - name: Make Old Directory Windows
+      file:
+        path: /{{ version_output.stdout_lines[0] }}/old
+        state: directory
+      when: not windows_old.stat.exists
+
+    - stat:
+        path: /{{ version_output.stdout_lines[0] }}/old/{{ version_output.stdout_lines[1] }}
+      register: linux_dir_deats
+
+    - name: Make Version Directory
+      file:
+        path: /{{ version_output.stdout_lines[0] }}/old/{{ version_output.stdout_lines[1] }}
+        state: directory
+      when: not linux_dir_deats.stat.exists
+
+    - stat:
+        path: /{{ version_output.stdout_lines[0] }}/old/{{ version_output.stdout_lines[1] }}
+      register: windows_dir_deats
+
+    - name: Make Version Directory Windows
+      file:
+        path: /{{ version_output.stdout_lines[0] }}/old/{{ version_output.stdout_lines[1] }}
+        state: directory
+      when: not windows_dir_deats.stat.exists
+
+    - stat:
+        path: /downloaded/{{ version_output.stdout_lines[0] }}/windows/
+      register: windows_dir
+      delegate_to: localhost
+
+    - stat:
+        path: /downloaded/{{ version_output.stdout_lines[0] }}/linux/
+      register: linux_dir
+      delegate_to: localhost

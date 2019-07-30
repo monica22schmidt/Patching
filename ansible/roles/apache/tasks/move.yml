@@ -1,0 +1,13 @@
+---
+
+    - name: Move Files to Old
+      command: mv "{{ item.path }}" /tar/old/
+      with_items: "{{ files_matchedt.files }}"
+      when: tar_old.stat.exists
+
+    - name: Move Files to Old
+      command: mv "{{ item.path }}" zip/old/
+      with_items: "{{ files_matchedz.files }}"
+      when: zip_old.stat.exists
+
+

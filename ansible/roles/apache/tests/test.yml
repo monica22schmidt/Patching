@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - /home/a003xv/etc/ansible/roles/apache

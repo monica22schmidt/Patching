@@ -1,0 +1,13 @@
+---
+
+    - name: Move Files to Old Linux
+      command: mv "{{ item.path}}" /{{ version_output.stdout_lines[0] }}/old/{{ version_output.stdout_lines[1] }}
+      with_items: "{{ files_matchedl.files }}"
+      when: linux_dir_deats.stat.exists
+
+    - name: Move Files to Old Windows
+      command: mv "{{ item.path }}" /{{ version_output.stdout_lines[0] }}/old/{{ version_output.stdout_lines[1] }}
+      with_items: "{{ files_matchedw.files }}"
+      when: windows_dir_deats.stat.exists
+
+

@@ -1,0 +1,35 @@
+---
+    - name: Check Paths
+      include: check_dirs.yml
+
+    - name: Search for Files
+      find:
+        paths: /tar
+        use_regex: yes
+        patterns: "(tar)*"
+      register: files_matchedt
+
+    - name: Search for Files
+      find:
+        paths: /zip
+        use_regex: yes
+        patterns: "(zip)*"
+      register: files_matchedz
+
+    - name: Include move tasks
+      include_tasks: move.yml
+      when: tar.stat.exists and zip.stat.exists
+
+    - name: Copy New Windows Files to Server
+      copy:
+        src: /zip/
+        dest: /zip/
+      when: zip.stat.exists
+
+    - name: Copy New Linux Files To Server
+      copy:
+        src: /tar/
+        dest: /tar/
+      when: tar.stat.exists
+
+

@@ -1,0 +1,21 @@
+---
+- name: Run Patching 
+  hosts: host2
+
+  pre_tasks:
+
+    - name: Install Beautiful Soup
+      pip:
+        name: beautifulsoup4, requests, urllib3
+        state: present
+      delegate_to: localhost
+
+  tasks:
+
+   - include_role:
+       name: corretto
+
+
+   - include_role: 
+       name: apache
+   

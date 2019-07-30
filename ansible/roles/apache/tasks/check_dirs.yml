@@ -1,0 +1,43 @@
+---
+    - stat:
+        path: {{ item }}
+      with_items: "{{ paths }}"
+      register: there
+
+    - name: Make Repo
+      file:
+        path: {{ item.item }}
+        state: directory
+      when: not item.stat.exists
+      with_items: "{{ there.results }}"
+
+    - stat:
+        path: /tar/old
+      register: tar_old
+
+    - name: Make Tar Old Directory
+      file:
+        path: /tar/old
+        state: directory
+      when: not tar_old.stat.exists
+
+    - stat:
+        path: /zip/old
+      register: zip_old
+
+    - name: Make Zip Old Directory
+      file:
+        path: /zip/old
+        state: directory
+      when: not zip_old.stat.exists
+
+    - stat:
+        path: /downloaded/tar
+      register: tar
+      delegate_to: localhost
+
+    - stat:
+        path: /downloaded/zip
+      register: zip
+      delegate_to: localhost
+
