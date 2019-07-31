@@ -35,7 +35,6 @@ Example Playbook
 
 Using the role, no variables need to be passed in
 <br></br>
-<br></br>
 \- hosts: host2
 
   &nbsp; pre_tasks:
