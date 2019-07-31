@@ -1,4 +1,4 @@
-Role Name
+Apache
 =========
 
 This role is used to run Apache patching. It compares the version numbers, downloads the necessary files, creates a security email, and updates the repo, inorder to automate our patching workflow.
