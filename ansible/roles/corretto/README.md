@@ -37,7 +37,7 @@ File paths are incorrect. They have been changed to protect sensitive company in
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Using the role, no variables need to be passed in.
 - hosts: host2
 
   pre_tasks:
