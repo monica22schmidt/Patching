@@ -53,7 +53,6 @@ Using the role, no variables need to be passed in
   &nbsp; tasks:
 
    &nbsp; &nbsp; &nbsp;\- include_role: 
-   <br></br>
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name: corretto
 
    &nbsp; &nbsp; &nbsp;\- include_role:  
