@@ -45,8 +45,11 @@ Using the role, no variables need to be passed in.
      name: Install Beautiful Soup, requests, and urllib3 
      pip: 
         name: beautifulsoup4, requests, urllib3 
+        <br></br>
         state: present 
+        <br></br>
         delegate_to: localhost
+        <br></br>
   tasks:
 
    - include_role: name: corretto
