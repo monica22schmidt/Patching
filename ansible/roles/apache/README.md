@@ -34,28 +34,31 @@ Example Playbook
 ----------------
 
 Using the role, no variables need to be passed in
-- hosts: host2
+<br></br>
+<br></br>
+\- hosts: host2
 
-  pre_tasks:
+  &nbsp; pre_tasks:
+  <br></br>
+    &nbsp; &nbsp; &nbsp;\- name: Install Beautiful Soup, requests, and urllib3 
+    <br></br>
+    &nbsp; &nbsp; &nbsp; &nbsp; pip: 
+    <br></br>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name: beautifulsoup4, requests, urllib3
+    <br></br>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; state: present
+    <br></br>
+     &nbsp; &nbsp; &nbsp; &nbsp; delegate_to: localhost
 
-    - name: Install Beautiful Soup, requests, and urllib3 
-      <br></br>
-      pip: 
-      <br></br>
-        name: beautifulsoup4, requests, urllib3 
-        <br></br>
-        state: present 
-        <br></br>
-        delegate_to: localhost
-        <br></br>
-  tasks:
+  &nbsp; tasks:
 
-   - include_role:
-       name: corretto
+   &nbsp; &nbsp; &nbsp;\- include_role: 
+   <br></br>
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name: corretto
 
+   &nbsp; &nbsp; &nbsp;\- include_role:  
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name: apache
 
-   - include_role: 
-       name: apache
    
 
 License
