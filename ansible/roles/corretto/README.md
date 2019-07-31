@@ -43,7 +43,9 @@ Using the role, no variables need to be passed in.
   pre_tasks:
 
      name: Install Beautiful Soup, requests, and urllib3 
+     <br></br>
      pip: 
+     <br></br>
         name: beautifulsoup4, requests, urllib3 
         <br></br>
         state: present 
