@@ -46,11 +46,11 @@ Using the role, no variables need to be passed in.
      <br></br>
      pip: 
      <br></br>
-        name: beautifulsoup4, requests, urllib3 
+           name: beautifulsoup4, requests, urllib3 
         <br></br>
-        state: present 
+           state: present 
         <br></br>
-        delegate_to: localhost
+           delegate_to: localhost
         <br></br>
   tasks:
 
