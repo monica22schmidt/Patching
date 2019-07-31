@@ -8,12 +8,12 @@
 
     - name: Send Apache Email Update
       mail:
-        host: mailgate.alliant-energy.com
+        host: mailgate...
         port: 25
         to:
-          - Email
+          - Email...
         from:
-          - Email
+          - Email...
         subject: "Weekly Apache Patching Report"
         body: "{{ EmailApache.stdout }}"
       delegate_to: localhost
