@@ -3,10 +3,12 @@ Apache
 
 This role is used to run Apache patching. It compares the version numbers, downloads the necessary files, creates a security email, and updates the repo, inorder to automate our patching workflow.
 
+
 Requirements
 ------------
 
 Server needs both Ansible and Python installed
+
 
 Role Variables
 --------------
@@ -21,10 +23,12 @@ zip: Should be initialized to false. It is used to see if the zip directory is p
 
 tar: Should be initialized to false. It is used to see if the tar directory is present in the file system.
 
+
 Dependencies
 ------------
 
-No extra role information 
+File paths are incorrect. They have been changed to protect sensitive company information. Proxies and emails have also been altered for this reason.
+
 
 Example Playbook
 ----------------
@@ -55,7 +59,9 @@ License
 
 BSD
 
+
 Author Information
 ------------------
 
 Monica Schmidt
+
