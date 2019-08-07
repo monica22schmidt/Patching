@@ -2,10 +2,14 @@ from Version import Version
 import sys
 
 
-# Used to retrieve the version number from the middleware repo. This is used to create the old version directory
+# Used to retrieve the version number from the  repo. 
+# This is used to create the old version directory.
 def main(argv):
-    version = Version("http://webaddress/" + argv + "/", "amazon", {},
-                      "linux").get_version()
+    
+    # Calls Version class
+    version = Version("http://..." + argv + "/", "amazon", {},
+                      "repo").get_version()
+    # Prints the retrieved information to be used when making  repo
     print(argv)
     print(version)
 
